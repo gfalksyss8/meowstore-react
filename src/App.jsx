@@ -5,6 +5,7 @@ import NavBar from './Pages/NavBar.jsx'
 import About from './Pages/About.jsx'
 import Footer from './Pages/Footer.jsx'
 import Catalog from './Pages/Catalog.jsx'
+import Cotd from './Pages/CatOfTheDay.jsx'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
       <Route path="/"   element={<StartPage/>} />
       <Route path="/about"    element={<About/>} />
       <Route path="catalog"   element={<Catalog/>} />
+      <Route path="catoftheday"   element={<Cotd/>} />
     </Routes>
 
     <Footer/>

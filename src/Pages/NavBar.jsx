@@ -22,7 +22,7 @@ export default function NavBar() {
                 </Link>
 
                 < NavLink to="/catalog" label="Catalog"/>
-                < NavLink to="/cotd" label="Cat of the Day"/>
+                < NavLink to="/catoftheday" label="Cat of the Day"/>
                 < NavLink to="/cart" label="Cart"/>
 
                 <button

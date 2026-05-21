@@ -18,7 +18,7 @@ Frontend project using React + Bootstrap
     - [ ] Search
     - [ ] Filtering
 - [ ] Cat of the Day
-    - [ ] Logic
+    - [x] Logic
     - [ ] Stats 
     - [ ] Link to page 
 - [ ] Individual breed page
