@@ -17,11 +17,12 @@ Frontend project using React + Bootstrap
     - [x] Pagination
     - [ ] Search
     - [ ] Filtering
-- [ ] Cat of the Day
+- [x] Cat of the Day
     - [x] Logic
-    - [ ] Stats 
-    - [ ] Link to page 
+    - [x] Stats 
+    - [x] Link to page 
 - [ ] Individual breed page
+    - [x] Routing
     - [ ] Add to cart
 - [ ] Cart 
     - [ ] Cart logic 
