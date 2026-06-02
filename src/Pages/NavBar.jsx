@@ -1,18 +1,11 @@
 import { Link } from 'react-router-dom'
 import NavLink from '../Components/NavLink'
+import useDarkMode from '../assets/themeToggle';
 
 import { useState, useEffect } from "react";
 
 export default function NavBar() {
-    const [theme, setTheme] = useState("light");
-
-    useEffect(() => {
-        document.documentElement.setAttribute("data-bs-theme", theme);
-    }, [theme])
-
-    function toggleTheme() {
-        setTheme(prev => (prev === "light" ? "dark" : "light"))
-    }
+    const {theme, toggleTheme} = useDarkMode();
 
     return (
         <nav className="navbar bg-body-tertiary">

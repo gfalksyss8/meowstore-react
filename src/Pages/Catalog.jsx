@@ -1,6 +1,7 @@
 import {useEffect, useState } from 'react'
 
 import CatCard from "../Components/CatCard.jsx"
+
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -66,6 +67,7 @@ export default function Catalog () {
                             ? `https://cdn2.thecatapi.com/images/${breed.reference_image_id}.jpg`
                             : "https://placehold.co/300x180"
                         }
+                        ref={breed.id}
                         />
                     </Col>
                 ))}

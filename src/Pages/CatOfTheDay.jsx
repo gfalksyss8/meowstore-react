@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react'
+import { Link } from "react-router-dom";
+
+import RatingBar from '../Components/RatingBar.jsx'
 
 import Spinner from 'react-bootstrap/Spinner'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
+import ProgressBar from 'react-bootstrap/ProgressBar'
 
 const API_URL = "https://api.thecatapi.com/v1/images/search?has_breeds=1"
 const key= "live_T42Boy2MViIi2batz3T2uCvrBuBmsgmmGDHJ8XPlbMh6fUh99TXnPBvVu7Gxkx84"
@@ -69,7 +73,35 @@ export default function Cotd() {
                 </aside>
 
                 <aside className="col py-2 my-4 border">
-                    <p>stats</p>
+                    <RatingBar value={breed.affection_level}/>
+                    <p>Affection
+                        <i class="bi bi-heart ms-3"></i>
+                    </p>
+
+                    <RatingBar value={breed.intelligence}/>
+                    <p>Intelligence
+                        <i class="bi bi-lightbulb ms-3"></i>
+                    </p>
+
+                    <RatingBar value={breed.energy_level}/>
+                    <p>Energy Level
+                        <i class="bi bi-battery ms-3"></i>
+                    </p>
+
+                    <RatingBar value={breed.vocalisation}/>
+                    <p>Vocalisation
+                        <i class="bi bi-volume-down ms-3"></i>
+                    </p>
+
+                    <RatingBar value={breed.stranger_friendly}/>
+                    <p>Stranger Friendly
+                        <i class="bi bi-person-exclamation ms-3"></i>
+                    </p>
+
+                    <RatingBar value={breed.dog_friendly}/>
+                    <p>Dog Friendly
+                        <i class="bi bi-gitlab ms-3"></i>
+                    </p>
                 </aside>
             </Row>
 
@@ -77,6 +109,9 @@ export default function Cotd() {
                 <section className="col py-2 my-4 ">
                     <h2>{breed.name}</h2>
                     <p>{breed.description}</p>
+                    <Link className="btn btn-outline-secondary" to={`/catalog/${breed.id}`}>
+                        Visit their page
+                    </Link>
                 </section>
             </Row>
         </Container>

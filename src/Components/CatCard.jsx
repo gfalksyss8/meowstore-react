@@ -1,22 +1,27 @@
 import Card from "react-bootstrap/Card"
 import Button from 'react-bootstrap/Button'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
+import { Link } from "react-router-dom";
 
-export default function CatCard({src, breed, origin, ref}) {
+export default function CatCard({src, breed, origin, ref, state}) {
 
     return (
         <Card style={{ width: '18rem' }}>
         <Card.Img className="object-fit-cover rounded" variant="top" height="180px" src={src}/>
             <Card.Body>
-                <Card.Title>{breed}</Card.Title>
+                <Card.Title>
+                    {breed}
+                </Card.Title>
                 <Card.Text>
-                {origin}
+                    {origin}
                 </Card.Text>
                 <ButtonGroup className="mb-2">
-                    <Button variant="outline-secondary">Visit their page</Button>
-                    <Button variant="primary">
+                    <Link className="btn btn-outline-secondary" to={ref}>
+                        Visit their page
+                    </Link>
+                    <Link className="btn btn-primary">
                         <i className="bi bi-cart2"></i>
-                    </Button>
+                    </Link>
                 </ButtonGroup>
             </Card.Body>
         </Card>

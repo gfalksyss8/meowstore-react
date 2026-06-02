@@ -13,8 +13,8 @@ export default function StartPage() {
 
             <div className="row">
                 <section className="col py-2 my-4">
-                    <p>At Meow Store, we have the widest selection of cat breeds. All of our cats are bred with love, and we ensure the safety of all of our cats.
-                        Meow Store has a no-left-behind policy, and we collaborate with local animal rescue laws to ensure all of our cats are cared for lovingly and safely. All available cats are vaccinated and disease-free.
+                    <p>At Meow Store, we have the widest selection of cat breeds. All of our cats are bred with love, and we ensure the safety of all of our cats.<br/><br/>
+                        Meow Store has a no-left-behind policy, and we collaborate with local animal rescue laws to ensure all of our cats are cared for lovingly and safely. All available cats are vaccinated and disease-free.<br/><br/>
                         Browse our Catalog to see all breeds currently available for purchase, or check out the featured Cat of the Day!
                     </p>
                 </section>
