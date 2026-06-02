@@ -6,6 +6,8 @@ import Row from "react-bootstrap/Row"
 import Spinner from "react-bootstrap/Spinner"
 import Button from "react-bootstrap/Button"
 
+import addToCart from '../assets/cart'
+
 const API_URL = "https://api.thecatapi.com/v1/breeds"
 const key= "live_T42Boy2MViIi2batz3T2uCvrBuBmsgmmGDHJ8XPlbMh6fUh99TXnPBvVu7Gxkx84"
 
@@ -65,11 +67,13 @@ export default function Breed() {
                     />
                 </aside>
 
-                <aside className="col py-2 my-4 border">
+                <aside className="col py-2 my-4 border d-flex flex-column justify-content-center">
                     <section className="my-5">
                         <p>Availability: <b>Yes</b></p>
                         <p>Price: <b>500kr</b></p>
-                        <Button>Add to Cart</Button>
+                        <Button onClick={() => addToCart(breed)}>
+                            Add to Cart<i className="bi bi-cart2 ms-3"></i>
+                        </Button>
                     </section>
                 </aside>
             </Row>

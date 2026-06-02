@@ -72,7 +72,7 @@ export default function Cotd() {
                     />
                 </aside>
 
-                <aside className="col py-2 my-4 border">
+                <aside className="col py-2 my-4 border d-flex flex-column justify-content-center">
                     <RatingBar value={breed.affection_level}/>
                     <p>Affection
                         <i class="bi bi-heart ms-3"></i>
@@ -109,7 +109,7 @@ export default function Cotd() {
                 <section className="col py-2 my-4 ">
                     <h2>{breed.name}</h2>
                     <p>{breed.description}</p>
-                    <Link className="btn btn-outline-secondary" to={`/catalog/${breed.id}`}>
+                    <Link to={`/catalog/${breed.id}`}>
                         Visit their page
                     </Link>
                 </section>

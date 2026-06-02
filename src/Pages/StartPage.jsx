@@ -30,7 +30,7 @@ export default function StartPage() {
 
                 <aside className="col py-2 my-4">
                     <p>See our Cat of the Day</p><br></br>
-                    <Link className="btn btn-primary" to="/cotd">
+                    <Link className="btn btn-primary" to="/catoftheday">
                         Cat of the Day
                     </Link>
                 </aside>
