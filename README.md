@@ -12,11 +12,11 @@ Frontend project using React + Bootstrap
 - [x] Home
     - [x] Banner Image
     - [x] Links
-- [ ] Catalog
+- [x] Catalog
     - [x] Cards
     - [x] Pagination
     - [x] Search
-    - [ ] Filtering
+    - [x] Filtering
 - [x] Cat of the Day
     - [x] Logic
     - [x] Stats 
