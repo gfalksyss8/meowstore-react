@@ -10,6 +10,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Pagination from 'react-bootstrap/Pagination'
 import Spinner from 'react-bootstrap/Spinner'
+import Form from 'react-bootstrap/Form'
 
 // Cat API setup
 const API_URL = "https://api.thecatapi.com/v1/breeds"
@@ -20,6 +21,9 @@ export default function Catalog () {
 
     const [currentPage, setCurrentPage] = useState(1)
 
+    // Search state
+    const [searchTerm, setSearchTerm] = useState("")
+
     const itemsPerPage = 12;
 
     // Cat API fetch
@@ -27,19 +31,23 @@ export default function Catalog () {
     fetch(API_URL)
         .then(res => res.json())
         .then(data => {
-            setBreeds(data);
+            setBreeds(data)
         })
         .finally(() => {
-            setLoading(false);
+            setLoading(false)
         });
     }, []);
 
-    // Pagination variables
-    const totalPages = Math.ceil(breeds.length / itemsPerPage);
-    const start = (currentPage - 1) * itemsPerPage;
-    const end = start + itemsPerPage;
+    // Filter breeds
+    const filteredBreeds = breeds.filter(breed =>
+        breed.name.toLowerCase().includes(searchTerm)
+    )
 
-    const currentBreeds = breeds.slice(start, end);
+    // Pagination variables
+    const totalPages = Math.ceil(filteredBreeds.length / itemsPerPage)
+    const start = (currentPage - 1) * itemsPerPage
+    const end = start + itemsPerPage
+    const currentBreeds = filteredBreeds.slice(start, end)
 
     // Loading page
     if (loading) {
@@ -56,6 +64,12 @@ export default function Catalog () {
             <h4 className="text-body">Catalog</h4>
 
             <Container className="py-2 my-4">
+
+                <Container className="mb-3">
+                    <Form.Label>Search</Form.Label>
+                    <Form.Control type="text" placeholder="Search breed by name..." value={searchTerm} onChange={(e) => { setSearchTerm(e.target.value.toLowerCase()); setCurrentPage(1) }}/>
+                </Container>
+
                 <Row className="g-4 justify-content-center">
 
                 {/* Map all breeds into CatCards */}

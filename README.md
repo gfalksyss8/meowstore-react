@@ -15,7 +15,7 @@ Frontend project using React + Bootstrap
 - [ ] Catalog
     - [x] Cards
     - [x] Pagination
-    - [ ] Search
+    - [x] Search
     - [ ] Filtering
 - [x] Cat of the Day
     - [x] Logic
