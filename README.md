@@ -21,10 +21,10 @@ Frontend project using React + Bootstrap
     - [x] Logic
     - [x] Stats 
     - [x] Link to page 
-- [ ] Individual breed page
+- [x] Individual breed page
     - [x] Routing
-    - [ ] Add to cart
-- [ ] Cart 
-    - [ ] Cart logic 
-    - [ ] Form submission 
-    - [ ] Cart summary 
+    - [x] Add to cart
+- [x] Cart 
+    - [x] Cart logic 
+    - [x] Form submission 
+    - [x] Cart summary 
