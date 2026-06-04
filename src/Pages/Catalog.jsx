@@ -20,11 +20,13 @@ export default function Catalog () {
     const [loading, setLoading] = useState(true)
 
     const [currentPage, setCurrentPage] = useState(1)
+    const itemsPerPage = 12;
 
     // Search state
     const [searchTerm, setSearchTerm] = useState("")
 
-    const itemsPerPage = 12;
+    // Filtering
+    const [allergyFree, setAllergyFree] = useState(false)
 
     // Cat API fetch
     useEffect(() => {
@@ -41,6 +43,9 @@ export default function Catalog () {
     // Filter breeds
     const filteredBreeds = breeds.filter(breed =>
         breed.name.toLowerCase().includes(searchTerm)
+    )
+        .filter(breed => 
+            !allergyFree || breed.hypoallergenic === 1
     )
 
     // Pagination variables
@@ -65,10 +70,19 @@ export default function Catalog () {
 
             <Container className="py-2 my-4">
 
-                <Container className="mb-3">
-                    <Form.Label>Search</Form.Label>
-                    <Form.Control type="text" placeholder="Search breed by name..." value={searchTerm} onChange={(e) => { setSearchTerm(e.target.value.toLowerCase()); setCurrentPage(1) }}/>
-                </Container>
+                <Row className="mb-3 align-items-end">
+                    <Col md={6} className="d-flex align-items-center">
+                        <Form.Label>Search</Form.Label>
+                        <Form.Control type="text" placeholder="Search breed by name..." value={searchTerm} 
+                                    onChange={(e) => { setSearchTerm(e.target.value.toLowerCase()); setCurrentPage(1) }}/>
+                    </Col>
+                    
+                    <Col md={6} className="d-flex align-items-center">
+                    <Form.Check type="checkbox" label="Non-allergic" checked={allergyFree} 
+                                onChange={(e) => { setAllergyFree(e.target.checked); setCurrentPage(1)}}
+                                className="d-flex align-items-center gap-2 m-2 big-check"/>
+                    </Col>
+                </Row>
 
                 <Row className="g-4 justify-content-center">
 
