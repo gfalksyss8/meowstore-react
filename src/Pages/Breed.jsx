@@ -1,6 +1,7 @@
 // React modules
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 // Bootstrap modules
 import Container from 'react-bootstrap/Container'
@@ -56,7 +57,8 @@ export default function Breed() {
         return (
             <div className="container py-4 my-2 border text-center">
                 <h4 className="text-body">Invalid breed</h4>
-                <p>No breed {breed?.id} found</p>
+                <p>No breed with such name found</p>
+                <Link to="/catalog">Return to catalog</Link>
             </div>
         )
     }

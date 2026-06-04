@@ -127,7 +127,7 @@ export default function Cart() {
                             </Form.Text>
                         </Form.Group> 
 
-                        <Button className="btn btn-primary" type="submit" disabled={!isValid}>
+                        <Button className="btn btn-success" type="submit" disabled={!isValid}>
                             Submit
                         </Button>
                     </Form>
