@@ -5,19 +5,38 @@ import Toast from 'react-bootstrap/Toast'
 import ToastContainer from 'react-bootstrap/ToastContainer'
 
 // React modules
-import { useState} from 'react'
+import { useState } from 'react'
+import { useEffect } from 'react'
 
 // Own components
-import { getCartTotalQuantity } from '../assets/cart'
-import { getCartTotalPrice } from '../assets/cart'
 import { removeFromCart } from '../assets/cart'
 import CartItem from "../Components/CartItem"
 import { getCart } from "../assets/cart"
 
-const cart = getCart()
-
 export default function Cart() {
     const [show, setShow] = useState(false)
+    const [cart, setCart] = useState(getCart())
+
+    useEffect(() => 
+    {
+        const updateCart = () => setCart(getCart())
+
+        window.addEventListener("cartUpdated", updateCart)
+
+        return () => {
+            window.removeEventListener("cartUpdated", updateCart)
+        }
+    }, [])
+
+    // Summary states
+    const totalQuantity = cart.reduce(
+        (total, item) => total + item.quantity,
+        0
+    )
+    const totalPrice = cart.reduce(
+        (total, item) => total + item.quantity * item.price,
+        0
+    )
 
     // Form states
     const [name, setName] = useState("")
@@ -74,8 +93,8 @@ export default function Cart() {
             <div className="row">
                 {/* Cart Summary */}
                 <aside className="col py-2 my-4 border d-flex flex-column justify-content-center">
-                    <h5>Total Quantity: {getCartTotalQuantity()}</h5>
-                    <h5>Total Price: {getCartTotalPrice()} kr</h5>
+                    <h5>Total Quantity: {totalQuantity}</h5>
+                    <h5>Total Price: {totalPrice} kr</h5>
                 </aside>
 
                 {/* Submission form */}

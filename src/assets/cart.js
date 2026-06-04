@@ -57,9 +57,17 @@ export default function addToCart(breed) {
 export function removeFromCart(id) {
     const cart = getCart()
 
-    const updatedCart = cart.filter(item => item.id !== id)
+    const item = cart.find(item => item.id === id)
 
-    localStorage.setItem("cart", JSON.stringify(updatedCart))
+    if(!item) return
 
+    if (item.quantity > 1) {
+        item.quantity -= 1
+    } else {
+        const index = cart.findIndex(item => item.id === id)
+        cart.splice(index, 1)
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart))
     window.dispatchEvent(new Event("cartUpdated"))
 }
