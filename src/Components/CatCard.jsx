@@ -1,8 +1,12 @@
-import Card from "react-bootstrap/Card"
+// Bootstrap modules
+import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
-import { Link } from "react-router-dom";
 
+// React modules
+import { Link } from 'react-router-dom'
+
+// Local components
 import addToCart from '../assets/cart'
 
 export default function CatCard({src, breed, origin, breedId}) {

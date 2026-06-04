@@ -1,7 +1,11 @@
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react"
+// React modules
+import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
+// Bootstrap modules
 import Badge from 'react-bootstrap/Badge'
+
+// Local components
 import { getCartTotalQuantity } from '../assets/cart'
 
 export default function NavLink({ to, label }) {

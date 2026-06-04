@@ -1,13 +1,17 @@
+// React modules
 import {useEffect, useState } from 'react'
 
-import CatCard from "../Components/CatCard.jsx"
+// Local components
+import CatCard from '../Components/CatCard.jsx'
 
+// Bootstrap modules
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Pagination from 'react-bootstrap/Pagination'
 import Spinner from 'react-bootstrap/Spinner'
 
+// Cat API setup
 const API_URL = "https://api.thecatapi.com/v1/breeds"
 
 export default function Catalog () {
@@ -18,6 +22,7 @@ export default function Catalog () {
 
     const itemsPerPage = 12;
 
+    // Cat API fetch
     useEffect(() => {
     fetch(API_URL)
         .then(res => res.json())
@@ -29,13 +34,14 @@ export default function Catalog () {
         });
     }, []);
 
+    // Pagination variables
     const totalPages = Math.ceil(breeds.length / itemsPerPage);
-
     const start = (currentPage - 1) * itemsPerPage;
     const end = start + itemsPerPage;
 
     const currentBreeds = breeds.slice(start, end);
 
+    // Loading page
     if (loading) {
         return (
         <Container className="d-flex justify-content-center py-5">
@@ -44,6 +50,7 @@ export default function Catalog () {
         );
     }
 
+    // Correct page
     return (
         <Container className="py-4 my-2 border text-center">
             <h4 className="text-body">Catalog</h4>
@@ -51,6 +58,7 @@ export default function Catalog () {
             <Container className="py-2 my-4">
                 <Row className="g-4 justify-content-center">
 
+                {/* Map all breeds into CatCards */}
                 {currentBreeds.map(breed => (
                     <Col
                         key={breed.id}
@@ -74,6 +82,7 @@ export default function Catalog () {
                 </Row>
             </Container>
 
+            {/* Pagination */}
             <Pagination className="justify-content-center mt-5">
 
                 {[...Array(totalPages)].map((_, index) => {

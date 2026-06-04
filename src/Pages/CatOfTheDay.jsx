@@ -1,13 +1,17 @@
+// React modules
 import { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 
+// Local components
 import RatingBar from '../Components/RatingBar.jsx'
 
+// Bootstrap modules
 import Spinner from 'react-bootstrap/Spinner'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import ProgressBar from 'react-bootstrap/ProgressBar'
 
+// Cat API setup
 const API_URL = "https://api.thecatapi.com/v1/images/search?has_breeds=1"
 const key= "live_T42Boy2MViIi2batz3T2uCvrBuBmsgmmGDHJ8XPlbMh6fUh99TXnPBvVu7Gxkx84"
 
@@ -17,6 +21,7 @@ export default function Cotd() {
 
     const [loading, setLoading] = useState(true)
 
+    // API Fetch
     useEffect(() => {
         fetch(API_URL, {
             headers: {
@@ -42,7 +47,7 @@ export default function Cotd() {
         })
     }, [])
 
-    
+    // Loading page
     if (loading) {
         return (
             <Container className="d-flex justify-content-center py-5">
@@ -51,6 +56,7 @@ export default function Cotd() {
         );
     }
 
+    // If cat API fetch fails
     if (breed === null) {
         return (
             <Container className="d-flex justify-content-center py-5">
@@ -59,6 +65,7 @@ export default function Cotd() {
         )
     }
 
+    // If fetch succeeds
     return (
         <Container className="py-4 my-2 border text-center">
             <h4 className="text-body">Cat of the Day</h4>

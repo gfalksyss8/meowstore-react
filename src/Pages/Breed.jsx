@@ -1,13 +1,17 @@
-import { useParams } from "react-router-dom"
-import { useEffect, useState } from "react"
+// React modules
+import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
-import Container from "react-bootstrap/Container"
-import Row from "react-bootstrap/Row"
-import Spinner from "react-bootstrap/Spinner"
-import Button from "react-bootstrap/Button"
+// Bootstrap modules
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Spinner from 'react-bootstrap/Spinner'
+import Button from 'react-bootstrap/Button'
 
+// Local components
 import addToCart from '../assets/cart'
 
+// Cat API setup
 const API_URL = "https://api.thecatapi.com/v1/breeds"
 const key= "live_T42Boy2MViIi2batz3T2uCvrBuBmsgmmGDHJ8XPlbMh6fUh99TXnPBvVu7Gxkx84"
 
@@ -17,6 +21,7 @@ export default function Breed() {
     const [breed, setBreed] = useState(null)
     const [loading, setLoading] = useState(true)
 
+    // Cat API fetch
     useEffect(() => {
             fetch(API_URL, {
                 headers: {
@@ -37,6 +42,7 @@ export default function Breed() {
             })
     }, [id])
 
+    // Loading page
     if (loading) {
         return (
         <Container className="d-flex justify-content-center py-5">
@@ -45,6 +51,7 @@ export default function Breed() {
         );
     }
 
+    // Incorrect breed nav
     if (!breed) {
         return (
             <div className="container py-4 my-2 border text-center">
@@ -54,6 +61,7 @@ export default function Breed() {
         )
     }
 
+    // Correct page
     return (
         <Container className="py-4 my-2 border text-center">
             <h4 className="text-body">{breed.name}</h4>

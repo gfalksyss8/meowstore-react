@@ -1,17 +1,19 @@
+// Bootstrap modules
 import ProgressBar from 'react-bootstrap/ProgressBar'
 
 export default function RatingBar({ value }) {
-    let color;
+    let color
 
     if (value > 3) {
-        color = "success";
+        color = "success"
     } else if (value > 1) {
-        color = "warning";
+        color = "warning"
     } else {
-        color = "danger";
+        color = "danger"
     }
 
-    const bar = value * 20;
+    // Multiply value (0-5) by 20 since max value is 100
+    const bar = value * 20
 
     return (
         <ProgressBar 

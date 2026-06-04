@@ -1,7 +1,9 @@
-import { Link } from 'react-router-dom'
+// Local components
 import NavLink from '../Components/NavLink'
 import useDarkMode from '../assets/themeToggle';
 
+// React modules
+import { Link } from 'react-router-dom'
 import { useState, useEffect } from "react";
 
 export default function NavBar() {

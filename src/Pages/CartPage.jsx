@@ -1,10 +1,13 @@
+// Bootstrap modules
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Toast from 'react-bootstrap/Toast'
 import ToastContainer from 'react-bootstrap/ToastContainer'
 
+// React modules
 import { useState} from 'react'
 
+// Own components
 import { getCartTotalQuantity } from '../assets/cart'
 import { getCartTotalPrice } from '../assets/cart'
 import { removeFromCart } from '../assets/cart'
@@ -29,31 +32,33 @@ export default function Cart() {
         <div className="container py-4 my-2 border text-center">
             <h4 className="text-body">Your Cart</h4>
 
-        <ToastContainer position="top-center" className="position-fixed top-5 start-50 translate-middle-x p-3">
-            <Toast className="d-inline-block m-2" bg="success" onClose={() => setShow(false)} show={show}>
-                <Toast.Header>
-                    <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
-                    <strong className="me-auto">Meow Store</strong>
-                    <small>Confirm</small>
-                </Toast.Header>
-                <Toast.Body>
-                    <b>Success!</b> Your order has been confirmed.<br/>
-                    Order Details:
-                    <ul>
-                        {cart.map(item => (
-                            <li>{item.name} x{item.quantity}</li>
-                        ))}
-                    </ul>
-                    Customer Details:
+            {/* Always on top toast for order */}
+            <ToastContainer position="top-center" className="position-fixed top-5 start-50 translate-middle-x p-3">
+                <Toast className="d-inline-block m-2" bg="success" onClose={() => setShow(false)} show={show}>
+                    <Toast.Header>
+                        <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
+                        <strong className="me-auto">Meow Store</strong>
+                        <small>Confirm</small>
+                    </Toast.Header>
+                    <Toast.Body>
+                        <b>Success!</b> Your order has been confirmed.<br/>
+                        Order Details:
                         <ul>
-                            <li>{name}</li>
-                            <li>{email}</li>
-                            <li>{address}</li>
+                            {cart.map(item => (
+                                <li>{item.name} x{item.quantity}</li>
+                            ))}
                         </ul>
-                </Toast.Body>
-            </Toast>
-        </ToastContainer>
+                        Customer Details:
+                            <ul>
+                                <li>{name}</li>
+                                <li>{email}</li>
+                                <li>{address}</li>
+                            </ul>
+                    </Toast.Body>
+                </Toast>
+            </ToastContainer>
 
+            {/* Each item in cart */}
             <div className="row">
                 <section className="col py-2 my-4">
                     {cart.map(item => (
@@ -67,11 +72,13 @@ export default function Cart() {
             </div>
 
             <div className="row">
+                {/* Cart Summary */}
                 <aside className="col py-2 my-4 border d-flex flex-column justify-content-center">
                     <h5>Total Quantity: {getCartTotalQuantity()}</h5>
                     <h5>Total Price: {getCartTotalPrice()} kr</h5>
                 </aside>
 
+                {/* Submission form */}
                 <aside className="col py-2 my-4 border">
                     <Form onSubmit={(e) => { e.preventDefault(); setShow(true)}}>
                         <Form.Group className="mb-3" controlId="formBasicName">

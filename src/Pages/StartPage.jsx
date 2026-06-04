@@ -1,4 +1,7 @@
+// Local components
 import CatBanner from '../Components/CatBanner.jsx'
+
+// React modules
 import { Link } from 'react-router-dom'
 
 export default function StartPage() {

@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react"
+// React modules
+import { useEffect, useState } from 'react'
 
-const url = "https://api.thecatapi.com/v1/images/search"
+// Cat API setup
+const url = 'https://api.thecatapi.com/v1/images/search'
 
 export default function CatBanner() {
-    const [image, setImage] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [image, setImage] = useState(null)
+    const [loading, setLoading] = useState(true)
 
+    // API Fetch
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
