@@ -60,14 +60,14 @@ export default function Catalog () {
                         className="d-flex justify-content-center"
                     >
                         <CatCard
-                        breed={breed.name}
+                        breed={breed}
                         origin={breed.origin}
                         src={
                             breed.reference_image_id
                             ? `https://cdn2.thecatapi.com/images/${breed.reference_image_id}.jpg`
                             : "https://placehold.co/300x180"
                         }
-                        ref={breed.id}
+                        breedId={breed.id}
                         />
                     </Col>
                 ))}

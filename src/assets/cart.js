@@ -9,6 +9,16 @@ export function getCartTotalQuantity() {
     return cart.reduce((total, item) => total + item.quantity, 0);
 }
 
+// Returns total price of all items
+export function getCartTotalPrice() {
+    const cart = getCart()
+
+    return cart.reduce(
+        (total, item) => total + (item.price * item.quantity),
+        0
+    )
+}
+
 // Updates cart count in the navbar
 function updateCartCount() {
     window.dispatchEvent(new Event("cartUpdated"))
@@ -41,4 +51,15 @@ export default function addToCart(breed) {
 
     saveCart(cart);
     updateCartCount();
+}
+
+// Remove item from cart logic
+export function removeFromCart(id) {
+    const cart = getCart()
+
+    const updatedCart = cart.filter(item => item.id !== id)
+
+    localStorage.setItem("cart", JSON.stringify(updatedCart))
+
+    window.dispatchEvent(new Event("cartUpdated"))
 }

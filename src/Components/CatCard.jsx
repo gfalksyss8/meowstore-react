@@ -5,20 +5,20 @@ import { Link } from "react-router-dom";
 
 import addToCart from '../assets/cart'
 
-export default function CatCard({src, breed, origin, ref, state}) {
+export default function CatCard({src, breed, origin, breedId}) {
 
     return (
         <Card style={{ width: '18rem' }}>
         <Card.Img className="object-fit-cover rounded" variant="top" height="180px" src={src}/>
             <Card.Body>
                 <Card.Title>
-                    {breed}
+                    {breed.name}
                 </Card.Title>
                 <Card.Text>
                     {origin}
                 </Card.Text>
                 <ButtonGroup className="mb-2">
-                    <Link className="btn btn-outline-secondary" to={ref}>
+                    <Link className="btn btn-outline-secondary" to={breedId}>
                         Visit their page
                     </Link>
                     <Button className="btn btn-primary"
