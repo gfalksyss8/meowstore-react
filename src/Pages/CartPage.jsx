@@ -9,7 +9,8 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 
 // Own components
-import CartItem from "../Components/CartItem"
+import CartItem from '../Components/CartItem'
+import CheckoutModal from '../Components/CheckoutModal'
 
 // Context API
 import { useCart } from '../context/CartContext'
@@ -19,8 +20,11 @@ export default function Cart() {
     cart,
     removeFromCart,
     } = useCart()
+    const isCartEmpty = cart.length === 0
 
     const [show, setShow] = useState(false)
+
+    const [showModal, setShowModal] = useState(false)
 
     // Summary states
     const totalQuantity = cart.reduce(
@@ -71,6 +75,24 @@ export default function Cart() {
                 </Toast>
             </ToastContainer>
 
+            {/* Checkout modal */}
+            <CheckoutModal
+                show={showModal}
+                onClose={() => setShowModal(false)}
+                name={name}
+                setName={setName}
+                email={email}
+                setEmail={setEmail}
+                address={address}
+                setAddress={setAddress}
+                isValid={isValid}
+                cart={cart}
+                onSubmit={() => {
+                    setShow(true);       // toast
+                    setShowModal(false); // close modal
+                }}
+                />
+
             {/* Each item in cart */}
             <div className="row">
                 <section className="col py-2 my-4">
@@ -93,38 +115,7 @@ export default function Cart() {
 
                 {/* Submission form */}
                 <aside className="col py-2 my-4 border">
-                    <Form onSubmit={(e) => { e.preventDefault(); setShow(true)}}>
-                        <Form.Group className="mb-3" controlId="formBasicName">
-                            <Form.Label>Full Name</Form.Label>
-                            <Form.Control type="text" placeholder="John Smith" 
-                                            value={name} onChange={(e) => setName(e.target.value)} 
-                                            isValid={name.length >= 1} isInvalid={name.length < 1}/>
-                            <Form.Text className="text-muted">
-                            </Form.Text>
-                        </Form.Group> 
-
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label>Email Address</Form.Label>
-                            <Form.Control type="email" placeholder="john@example.com" 
-                                            value={email} onChange={(e) => setEmail(e.target.value)} 
-                                            isValid={email.length >= 3} isInvalid={email.length < 3 && !email.includes("@")}/>
-                            <Form.Text className="text-muted">
-                            </Form.Text>
-                        </Form.Group> 
-
-                        <Form.Group className="mb-3" controlId="formBasicAddress">
-                            <Form.Label>Delivery Address</Form.Label>
-                            <Form.Control type="text" placeholder="Street 1" 
-                                            value={address} onChange={(e) => setAddress(e.target.value)}
-                                            isValid={address.length >= 1} isInvalid={address.length < 1}/>
-                            <Form.Text className="text-muted">
-                            </Form.Text>
-                        </Form.Group> 
-
-                        <Button className="btn btn-success" type="submit" disabled={!isValid}>
-                            Submit
-                        </Button>
-                    </Form>
+                    <Button variant="success" onClick={() => setShowModal(true)} disabled={isCartEmpty}> Begin Checkout</Button>
                 </aside>
             </div>
             
