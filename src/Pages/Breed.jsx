@@ -9,8 +9,8 @@ import Row from 'react-bootstrap/Row'
 import Spinner from 'react-bootstrap/Spinner'
 import Button from 'react-bootstrap/Button'
 
-// Local components
-import addToCart from '../assets/cart'
+// Context API
+import { useCart } from '../context/CartContext'
 
 // Cat API setup
 const API_URL = "https://api.thecatapi.com/v1/breeds"
@@ -18,6 +18,7 @@ const key= "live_T42Boy2MViIi2batz3T2uCvrBuBmsgmmGDHJ8XPlbMh6fUh99TXnPBvVu7Gxkx8
 
 export default function Breed() {
     const { id } = useParams()
+    const { addToCart } = useCart()
 
     const [breed, setBreed] = useState(null)
     const [loading, setLoading] = useState(true)

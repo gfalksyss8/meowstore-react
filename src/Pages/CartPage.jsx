@@ -9,24 +9,18 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 
 // Own components
-import { removeFromCart } from '../assets/cart'
 import CartItem from "../Components/CartItem"
-import { getCart } from "../assets/cart"
+
+// Context API
+import { useCart } from '../context/CartContext'
 
 export default function Cart() {
+    const {
+    cart,
+    removeFromCart,
+    } = useCart()
+
     const [show, setShow] = useState(false)
-    const [cart, setCart] = useState(getCart())
-
-    useEffect(() => 
-    {
-        const updateCart = () => setCart(getCart())
-
-        window.addEventListener("cartUpdated", updateCart)
-
-        return () => {
-            window.removeEventListener("cartUpdated", updateCart)
-        }
-    }, [])
 
     // Summary states
     const totalQuantity = cart.reduce(

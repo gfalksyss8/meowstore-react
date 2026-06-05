@@ -1,29 +1,20 @@
 // React modules
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
 
 // Bootstrap modules
 import Badge from 'react-bootstrap/Badge'
 
-// Local components
-import { getCartTotalQuantity } from '../assets/cart'
+// Context API
+import { useCart } from '../context/CartContext'
 
 export default function NavLink({ to, label }) {
-    const [qty, setQty] = useState(getCartTotalQuantity())
-
-    useEffect(() => {
-        const update = () => setQty(getCartTotalQuantity())
-
-        window.addEventListener("cartUpdated", update)
-
-        return () => window.removeEventListener("cartUpdated", update)
-    }, [])
+    const { totalQuantity } = useCart();
 
     if (label=="Cart") {
         return (
             <Link className="btn btn-outline-secondary" to={to}>
                 {label} 
-                <Badge bg="danger" className="ms-2">{getCartTotalQuantity()}</Badge>
+                <Badge bg="danger" className="ms-2">{totalQuantity}</Badge>
             </Link>
         )
     }

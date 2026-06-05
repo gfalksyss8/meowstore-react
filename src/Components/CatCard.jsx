@@ -6,10 +6,11 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup'
 // React modules
 import { Link } from 'react-router-dom'
 
-// Local components
-import addToCart from '../assets/cart'
+// Context API
+import { useCart } from '../context/CartContext'
 
 export default function CatCard({src, breed, origin, breedId}) {
+    const { addToCart } = useCart()
 
     return (
         <Card style={{ width: '18rem' }}>
