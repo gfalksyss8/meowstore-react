@@ -1,6 +1,9 @@
 # Meow Store
+This is a React Vite project using react-bootstrap and boostrap icons for styling. Pages are routed using react-dom, and the project is built using .jsx components.
 
-Frontend project using React + Bootstrap
+## How to run:
+Download the project, and make sure you have npm installed.
+Run ```npm run dev``` in the folder directory, and navigate to the given localhost address.
 
 ## TODO:
 
